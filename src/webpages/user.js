@@ -12,7 +12,13 @@ const User = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch("http://127.0.0.1:3001/users/user/" + params.id);
+                const saved = localStorage.getItem('project1');
+                const jwtObj = JSON.parse(saved);
+                const response = await fetch("http://127.0.0.1:3001/users/user/" + params.id, {
+                    headers: {
+                        'Authorization': `Bearer ${jwtObj.token}`
+                    }
+                });
                 const data = await response.json();
                 setUser(data);
                 setIsLoaded(true);
@@ -40,8 +46,11 @@ const User = () => {
                 <div>
                     Phone: {user.phone}
                 </div>
+                <div>
+                    Password: {user.password}
+                </div>
                 <br />
-                <Link to={'/'}>Inicio</Link>
+                <Link to={'/home'}>Inicio</Link>
             </React.Fragment>
         );
     }

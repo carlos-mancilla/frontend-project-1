@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { UserList } from '../components/UserList';
 import { UserItem } from '../components/UserItem';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         (async () => {
@@ -21,6 +22,12 @@ const Home = () => {
             }
         })();
     }, []);
+
+    const handleCloseSession = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('project1');
+        navigate("/");
+    };
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -37,7 +44,7 @@ const Home = () => {
                         ))
                     }
                 </UserList>
-                <Link to={'/adduser'}>Agrega usuario</Link>
+                <button onClick={handleCloseSession} type="button">Cerrar sesión</button>
             </React.Fragment>
         );
     }

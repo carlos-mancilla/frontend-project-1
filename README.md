@@ -1,4 +1,4 @@
-# Proyecto Frontend 1
+# Proyecto Frontend parte 2
 
 Este proyecto fue creado con [Create React App](https://github.com/facebook/create-react-app).
 
@@ -7,6 +7,15 @@ Se recomienda usar Node.js 18+. Se debe ejecutar `npm install` para instalar las
 Este proyecto consume un proyecto Banckend que debe ejecutarse aparte en la misma máquina.
 
 La ruta por defecto de este proyecto es http://localhost:3000 .
+
+En esta segunda parte se agregó seguridad con JWT, login de usuario y se modificó el funcionamiento de la webapp con un flujo más coherente.
+
+Para entrar a la App se puede usar el siguiente usuario que ya se encuentra en el archivo de ejemplo del backend:
+
+```
+email: mail@email.com
+password: mypassword
+```
 
 ## Scripts disponibles
 
